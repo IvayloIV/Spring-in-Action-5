@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Taco Cloud</title>
+</head>
+
+<body>
+    <h1>Create new Taco</h1>
+    <img th:src="@{/images/TacoCloud.jpg}" width="250px" height="200px" />
+
+    <form th:method="POST" th:object="${taco}">
+        <h3>Ingredients</h3>
+        <h4>Fruit</h4>
+        <input type="checkbox"
+                name="ingredients"
+                th:each="fruit : ${FRUIT}"
+                th:value="${fruit.id}"
+                th:text="${fruit.name}"></input>
+        <h4>Cheese</h4>
+            <input type="checkbox"
+                    name="ingredients"
+                    th:each="cheese : ${CHEESE}"
+                    th:value="${cheese.id}"
+                    th:text="${cheese.name}"></input>
+        <h4>Patatoes</h4>
+            <input type="checkbox"
+                    name="ingredients"
+                    th:each="patotoes : ${PATATOES}"
+                    th:value="${patotoes.id}"
+                    th:text="${patotoes.name}"></input>
+        <h4>Meat</h4>
+            <input type="checkbox"
+                    name="ingredients"
+                    th:each="meat : ${MEAT}"
+                    th:value="${meat.id}"
+                    th:text="${meat.name}"></input>
+        <span th:if="${#fields.hasErrors('ingredients')}"
+              th:errors="*{ingredients}"></span>
+        <label>
+            <h4>Taco Name:</h4>
+            <input type="text" th:field="*{name}"/>
+            <span th:if="${#fields.hasErrors('name')}"
+                  th:errors="*{name}"></span>
+        </label>
+        <br/>
+        <button>Create</button>
+    </form>
+</body>
+
+</html>
