@@ -1,0 +1,34 @@
+spring:
+    profiles:
+        active:
+            - dev
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver # in most of cases is not required
+        url: jdbc:mysql://localhost:3306/taco_cloud?allowPublicKeyRetrieval=true&useSSL=false
+        username: root
+        password: 1234
+        initialization-mode: always
+        schema:
+        - classpath:sql/ingredient.sql
+        - classpath:sql/schema.sql
+        # data:
+        # - classpath:sql/data.sql
+    jpa:
+        hibernate:
+            ddl-auto: none
+
+server:
+    port: 8080
+
+taco:
+    orders:
+        pageSize: 20
+        pageSizeMessage: Total orders per page ${taco.orders.pageSize}.
+
+---
+spring:
+    profiles:
+        - prod
+
+server:
+    port: 8002
