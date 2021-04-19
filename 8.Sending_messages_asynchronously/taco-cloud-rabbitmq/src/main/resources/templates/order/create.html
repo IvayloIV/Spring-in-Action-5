@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Taco Cloud</title>
+</head>
+
+<body>
+    <h1>Create new Order</h1>
+    <img th:src="@{/images/TacoCloud.jpg}" width="250px" height="200px" />
+    <span><a th:href="@{/design/show}">New Taco</a></span>
+
+    <form th:action="@{/order}" th:method="POST" th:object="${order}">
+        <h3>Order</h3>
+        <label>
+            <h4>Delivery name:</h4>
+            <input type="text" th:field="*{deliveryName}">
+            <span th:if="${#fields.hasErrors('deliveryName')}" th:errors="*{deliveryName}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>Street:</h4>
+            <input type="text" th:field="*{street}">
+            <span th:if="${#fields.hasErrors('street')}" th:errors="*{street}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>Address:</h4>
+            <input type="text" th:field="*{address}">
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>City:</h4>
+            <input type="text" th:field="*{city}">
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>CcNumber:</h4>
+            <input type="text" th:field="*{ccNumber}">
+            <span th:if="${#fields.hasErrors('ccNumber')}" th:errors="*{ccNumber}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>CcExpiration:</h4>
+            <input type="text" th:field="*{ccExpiration}">
+            <span th:if="${#fields.hasErrors('ccExpiration')}" th:errors="*{ccExpiration}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>CcCCV:</h4>
+            <input type="text" th:field="*{ccCCV}">
+            <span th:if="${#fields.hasErrors('ccCCV')}" th:errors="*{ccCCV}"></span>
+        </label>
+        <br/>
+        <button>Create</button>
+    </form>
+</body>
+
+</html>
