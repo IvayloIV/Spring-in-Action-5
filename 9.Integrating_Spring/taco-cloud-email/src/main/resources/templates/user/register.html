@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Taco Cloud</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <img th:src="@{/images/TacoCloud.jpg}" width="250px" height="200px" />
+    <span><a th:href="@{/login}">Already have registration?</a></span>
+
+    <form th:action="@{/register}" th:method="POST" th:object="${registrationForm}">
+        <label>
+            <h4>Username:</h4>
+            <input type="text" th:field="*{username}">
+            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>Password:</h4>
+            <input type="password" th:field="*{password}">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>Address:</h4>
+            <input type="text" th:field="*{address}">
+            <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></span>
+        </label>
+        <br/>
+        <label>
+            <h4>City:</h4>
+            <input type="text" th:field="*{city}">
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+        </label>
+        <br/>
+        <button>Create</button>
+    </form>
+</body>
+
+</html>
